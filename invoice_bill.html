@@ -1,0 +1,1843 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="??" lang="??">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Invoice Bill</title>
+    <style>
+      body {
+        margin: 0; /* กำหนดให้ไม่มีระยะห่างขอบ */
+        display: flex; /* กำหนดให้ใช้ Flexbox */
+        flex-direction: column; /* กำหนดให้ส่วนเนื้อหาเรียงต่อกันแนวตั้ง */
+        min-height: 100vh; /* กำหนดความสูงของหน้าเว็บให้เท่ากับอุปกรณ์ */
+        align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+        justify-content: center; /* จัดกึ่งกลางแนวนอน */
+        background-color: #ffffff;
+      }
+
+      .container {
+        width: 80%; /* กำหนดความกว้าง */
+        padding: 20px; /* กำหนดระยะห่างเนื้อหา */
+        background-color: #fff;
+        box-shadow: 0px 0px 10px #aaa; /* กำหนดเงา */
+        border-radius: 10px; /* กำหนดรูปทรง */
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <meta name="author" content="Windows User" />
+
+    <script src="js/textScript.js"></script>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+        text-indent: 0;
+      }
+      .s1 {
+        color: black;
+        font-family: Tahoma, sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 16.5pt;
+      }
+      .s2 {
+        color: black;
+        font-family: "Microsoft Sans Serif", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 13pt;
+      }
+      .s3 {
+        color: black;
+        font-family: "Microsoft Sans Serif", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 14.5pt;
+      }
+      .s4 {
+        color: black;
+        font-family: "Microsoft Sans Serif", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 14.5pt;
+      }
+      table,
+      tbody {
+        vertical-align: top;
+        overflow: visible;
+      }
+    </style>
+  </head>
+  <body>
+    <table
+      style="border-collapse: collapse; margin-left: 5.6365pt"
+      cellspacing="0"
+    >
+      <tr class="hbill" style="height: 58pt">
+        <td colspan="6">
+          <p class="bill">(invoice_bill.html/reset.html line 81&927)</p>
+          <p class="bill2">บิลเงินสด</p>
+          <br />
+          <p class="post">ที่อยู่:(invoice_bill.html/reset.html line 84&931)</p>
+          <p class="txt2">
+            เลขที<input class="num" id="n6" type="text" onkeyup="copyText()" />
+          </p>
+          <p class="txt3">
+            วันที <input type="date" id="datetime" name="datetime" />
+          </p>
+          <style>
+            /* กำหนดให้ไม่มีเส้นขอบ */
+            input[type="date"] {
+              border: none;
+            }
+
+            /* กำหนดสีพื้นหลัง */
+            input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+              background-color: #dce6f0;
+            }
+          </style>
+          <br />
+          <p class="tel">โทร:(invoice_bill.html/reset.html line 103&956)</p>
+          <p class="txt">
+            เลขประจำตัวผู้เสียภาษีอากร:
+            <input class="txtid-box" id="n7" type="text" onkeyup="copyText()" />
+          </p>
+        </td>
+      </tr>
+      <tr style="height: 49pt">
+        <td
+          style="
+            width: 514pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+          colspan="6"
+        >
+          <p
+            class="s4"
+            style="
+              padding-left: 12pt;
+              text-indent: 0pt;
+              line-height: 14pt;
+              text-align: left;
+            "
+          >
+            ชื่อลูกค้า: <input id="n1" type="text" onkeyup="copyText()" />
+          </p>
+
+          <p
+            class="s4"
+            style="
+              padding-left: 12pt;
+              text-indent: 0pt;
+              line-height: 15pt;
+              text-align: left;
+            "
+          >
+            เบอรโทร: <input id="n2" type="text" onkeyup="copyText()" />
+          </p>
+
+          <p
+            class="s4"
+            style="
+              padding-left: 12pt;
+              text-indent: 0pt;
+              line-height: 15pt;
+              text-align: left;
+            "
+          >
+            ยี่ห้อรถ: <input id="n3" type="text" onkeyup="copyText()" /> สี
+            <input class="col" id="n4" type="text" onkeyup="copyText()" />
+            ทะเบียน
+            <input class="vrn" id="n5" type="text" onkeyup="copyText()" />
+          </p>
+        </td>
+      </tr>
+      <tr style="height: 21pt">
+        <td
+          style="
+            width: 2pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 2pt;
+            background-color: #ffffff;
+          "
+        >
+          <p
+            class="s2"
+            style="
+              width: 40pt;
+              padding-top: 2pt;
+              padding-left: 2pt;
+              text-indent: 5pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            ลำดับ
+          </p>
+        </td>
+        <td
+          style="
+            width: 386pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <p
+            class="s2"
+            style="
+              padding-top: 2pt;
+              padding-left: 108pt;
+              padding-right: 109pt;
+              text-indent: 0pt;
+              text-align: center;
+              background-color: #ffffff;
+            "
+          >
+            รายละเอียดสินค้า
+          </p>
+        </td>
+        <td
+          style="
+            width: 48pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <p
+            class="s2"
+            style="
+              padding-top: 2pt;
+              padding-left: 7pt;
+              text-indent: 0pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            จำนวน
+          </p>
+        </td>
+        <td
+          style="
+            width: 46pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <p
+            class="s2"
+            style="
+              width: 46pt;
+              padding-top: 2pt;
+              padding-left: 7pt;
+              text-indent: 0pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            หน่วยละ
+          </p>
+        </td>
+        <td
+          style="
+            width: 46pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <p
+            class="s2"
+            style="
+              width: 46pt;
+              padding-top: 2pt;
+              padding-left: 7pt;
+              text-indent: 0pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            ส่วนลด
+          </p>
+        </td>
+        <td
+          style="
+            width: 60pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <p
+            class="s2"
+            style="
+              padding-top: 2pt;
+              padding-left: 1pt;
+              text-indent: 4pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            จำนวนเงิน
+          </p>
+        </td>
+      </tr>
+      <tr style="height: 154pt">
+        <td
+          style="
+            width: 28pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 2pt;
+            background-color: #ffffff;
+          "
+        >
+          <p style="text-indent: 0pt; text-align: left">
+            <input
+              class="number"
+              id="number"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc1"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc2"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc3"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc4"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc5"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc6"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc7"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc8"
+              type="text"
+              onkeyup="copyText()"
+            />
+            <input
+              class="number"
+              id="numberc9"
+              type="text"
+              onkeyup="copyText()"
+            />
+          </p>
+        </td>
+        <td
+          style="
+            width: 286pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 2pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input class="info" id="info" type="text" onkeyup="copyText()" />
+          <input class="info" id="info1" type="text" onkeyup="copyText()" />
+          <input class="info" id="info2" type="text" onkeyup="copyText()" />
+          <input class="info" id="info3" type="text" onkeyup="copyText()" />
+          <input class="info" id="info4" type="text" onkeyup="copyText()" />
+          <input class="info" id="info5" type="text" onkeyup="copyText()" />
+          <input class="info" id="info6" type="text" onkeyup="copyText()" />
+          <input class="info" id="info7" type="text" onkeyup="copyText()" />
+          <input class="info" id="info8" type="text" onkeyup="copyText()" />
+          <input class="info" id="info9" type="text" onkeyup="copyText()" />
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+        <td
+          style="
+            width: 48pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input
+            class="number2"
+            id="number2"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-1"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-2"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-3"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-4"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-5"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-6"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-7"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-8"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number2"
+            id="number2-9"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+        <td
+          style="
+            width: 46pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input
+            class="number3"
+            id="number3"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-1"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-2"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-3"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-4"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-5"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-6"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-7"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-8"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number3"
+            id="number3-9"
+            type="text"
+            onkeyup="copyText()"
+          />
+
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+        <td
+          style="
+            width: 46pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input
+            class="number4"
+            id="number4"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-1"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-2"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-3"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-4"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-5"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-6"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-7"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-8"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number4"
+            id="number4-9"
+            type="text"
+            onkeyup="copyText()"
+          />
+
+          <p style="text-indent: 0pt; text-align: left"><br /></p>
+        </td>
+        <td
+          style="
+            width: 60pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input
+            class="number5"
+            id="number5"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-1"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-2"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-3"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-4"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-5"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-6"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-7"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-8"
+            type="text"
+            onkeyup="copyText()"
+          />
+          <input
+            class="number5"
+            id="number5-9"
+            type="text"
+            onkeyup="copyText()"
+          />
+
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+      </tr>
+      <tr style="height: 18pt">
+        <td
+          style="
+            width: 362pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+          colspan="3"
+          rowspan="3"
+        >
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+        <td
+          style="
+            width: 92pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+          colspan="2"
+        >
+          <p
+            class="s2"
+            style="
+              padding-left: 30pt;
+              padding-right: 29pt;
+              text-indent: 0pt;
+              line-height: 15pt;
+              text-align: center;
+              background-color: #ffffff;
+            "
+          >
+            รวมเงิน
+          </p>
+        </td>
+        <td
+          style="
+            width: 60pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input class="pic" id="pic1" type="text" onkeyup="copyText()" />
+
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+      </tr>
+      <tr style="height: 18pt">
+        <td
+          style="
+            width: 92pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+          colspan="2"
+        >
+          <p
+            class="s2"
+            style="
+              padding-left: 22pt;
+              text-indent: 0pt;
+              line-height: 15pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            ภาษีมูลค่าเพิ่ม
+          </p>
+        </td>
+        <td
+          style="
+            width: 60pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input class="pic" id="pic2" type="text" onkeyup="copyText()" />
+
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+      </tr>
+      <tr style="height: 18pt">
+        <td
+          style="
+            width: 92pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+          colspan="2"
+        >
+          <p
+            class="s2"
+            style="
+              padding-left: 22pt;
+              text-indent: 0pt;
+              line-height: 15pt;
+              text-align: left;
+              background-color: #ffffff;
+            "
+          >
+            รวมเงินทั้งสิ้น
+          </p>
+        </td>
+        <td
+          style="
+            width: 60pt;
+            border-top-style: solid;
+            border-top-width: 1pt;
+            border-left-style: solid;
+            border-left-width: 1pt;
+            border-bottom-style: solid;
+            border-bottom-width: 1pt;
+            border-right-style: solid;
+            border-right-width: 1pt;
+            background-color: #ffffff;
+          "
+        >
+          <input class="pic" id="pic3" type="text" onkeyup="copyText()" />
+          <p style="text-indent: 0pt; text-align: left"></p>
+        </td>
+      </tr>
+    </table>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+    <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+      </head>
+      <body>
+        <table
+          style="border-collapse: collapse; margin-left: 5.6365pt"
+          cellspacing="0"
+        >
+          <tr class="hbill" style="height: 58pt">
+            <td colspan="6">
+              <p class="bill">(invoice_bill.html/reset.html line 81&927)</p>
+              <p class="bill2">บิลเงินสด</p>
+              <br />
+              <p class="post">
+                ที่อยู่:(invoice_bill.html/reset.html line 84&931)
+              </p>
+              <p class="txt2">
+                เลขที<input
+                  class="num"
+                  id="n6c"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+              </p>
+              <p class="txt3">
+                วันที <input type="date" id="datetimec" name="datetime" />
+              </p>
+              <style>
+                /* กำหนดให้ไม่มีเส้นขอบ */
+                input[type="date"] {
+                  border: none;
+                }
+
+                /* กำหนดสีพื้นหลัง */
+                input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+                  background-color: #dce6f0;
+                }
+              </style>
+              <br />
+              <p class="tel">โทร:(invoice_bill.html/reset.html line 103&956)</p>
+              <p class="txt">
+                เลขประจำตัวผู้เสียภาษีอากร:
+                <input
+                  class="txtid-box"
+                  id="n7c"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 49pt">
+            <td
+              style="
+                width: 514pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+              colspan="6"
+            >
+              <p
+                class="s4"
+                style="
+                  padding-left: 12pt;
+                  text-indent: 0pt;
+                  line-height: 14pt;
+                  text-align: left;
+                "
+              >
+                ชื่อลูกค้า: <input id="n1c" type="text" onkeyup="copyText()" />
+              </p>
+
+              <p
+                class="s4"
+                style="
+                  padding-left: 12pt;
+                  text-indent: 0pt;
+                  line-height: 15pt;
+                  text-align: left;
+                "
+              >
+                เบอรโทร: <input id="n2c" type="text" onkeyup="copyText()" />
+              </p>
+
+              <p
+                class="s4"
+                style="
+                  padding-left: 12pt;
+                  text-indent: 0pt;
+                  line-height: 15pt;
+                  text-align: left;
+                "
+              >
+                ยี่ห้อรถ: <input id="n3c" type="text" onkeyup="copyText()" /> สี
+                <input class="col" id="n4c" type="text" onkeyup="copyText()" />
+                ทะเบียน
+                <input class="vrn" id="n5c" type="text" onkeyup="copyText()" />
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 21pt">
+            <td
+              style="
+                width: 2pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 2pt;
+                background-color: #ffffff;
+              "
+            >
+              <p
+                class="s2"
+                style="
+                  width: 40pt;
+                  padding-top: 2pt;
+                  padding-left: 2pt;
+                  text-indent: 5pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                ลำดับ
+              </p>
+            </td>
+            <td
+              style="
+                width: 386pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <p
+                class="s2"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 108pt;
+                  padding-right: 109pt;
+                  text-indent: 0pt;
+                  text-align: center;
+                  background-color: #ffffff;
+                "
+              >
+                รายละเอียดสินค้า
+              </p>
+            </td>
+            <td
+              style="
+                width: 48pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <p
+                class="s2"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 7pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                จำนวน
+              </p>
+            </td>
+            <td
+              style="
+                width: 46pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <p
+                class="s2"
+                style="
+                  width: 46pt;
+                  padding-top: 2pt;
+                  padding-left: 7pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                หน่วยละ
+              </p>
+            </td>
+            <td
+              style="
+                width: 46pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <p
+                class="s2"
+                style="
+                  width: 46pt;
+                  padding-top: 2pt;
+                  padding-left: 7pt;
+                  text-indent: 0pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                ส่วนลด
+              </p>
+            </td>
+            <td
+              style="
+                width: 60pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <p
+                class="s2"
+                style="
+                  padding-top: 2pt;
+                  padding-left: 1pt;
+                  text-indent: 4pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                จำนวนเงิน
+              </p>
+            </td>
+          </tr>
+          <tr style="height: 154pt">
+            <td
+              style="
+                width: 28pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 2pt;
+                background-color: #ffffff;
+              "
+            >
+              <p style="text-indent: 0pt; text-align: left">
+                <input
+                  class="number"
+                  id="number-c"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c1"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c2"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c3"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c4"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c5"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c6"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c7"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c8"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+                <input
+                  class="number"
+                  id="number-c9"
+                  type="text"
+                  onkeyup="copyText()"
+                />
+              </p>
+            </td>
+            <td
+              style="
+                width: 286pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 2pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input
+                class="info"
+                id="info-c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c1"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c2"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c3"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c4"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c5"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c6"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c7"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c8"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="info"
+                id="info-c9"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+            <td
+              style="
+                width: 48pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input
+                class="number2"
+                id="number2c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-1c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-2c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-3c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-4c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-5c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-6c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-7c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-8c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number2"
+                id="number2-9c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+            <td
+              style="
+                width: 46pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input class="number3" id="number3c" type="text" />
+              <input
+                class="number3"
+                id="number3-1c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-2c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-3c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-4c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-5c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-6c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-7c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-8c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number3"
+                id="number3-9c"
+                type="text"
+                onkeyup="copyText()"
+              />
+
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+            <td
+              style="
+                width: 46pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input
+                class="number4"
+                id="number4c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-1c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-2c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-3c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-4c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-5c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-6c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-7c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-8c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number4"
+                id="number4-9c"
+                type="text"
+                onkeyup="copyText()"
+              />
+
+              <p style="text-indent: 0pt; text-align: left"><br /></p>
+            </td>
+            <td
+              style="
+                width: 60pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input
+                class="number5"
+                id="number5c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-1c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-2c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-3c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-4c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-5c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-6c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-7c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-8c"
+                type="text"
+                onkeyup="copyText()"
+              />
+              <input
+                class="number5"
+                id="number5-9c"
+                type="text"
+                onkeyup="copyText()"
+              />
+
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+          </tr>
+          <tr style="height: 18pt">
+            <td
+              style="
+                width: 362pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+              colspan="3"
+              rowspan="3"
+            >
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+            <td
+              style="
+                width: 92pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+              colspan="2"
+            >
+              <p
+                class="s2"
+                style="
+                  padding-left: 30pt;
+                  padding-right: 29pt;
+                  text-indent: 0pt;
+                  line-height: 15pt;
+                  text-align: center;
+                  background-color: #ffffff;
+                "
+              >
+                รวมเงิน
+              </p>
+            </td>
+            <td
+              style="
+                width: 60pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input class="pic" id="pic1c" type="text" onkeyup="copyText()" />
+
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+          </tr>
+          <tr style="height: 18pt">
+            <td
+              style="
+                width: 92pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+              colspan="2"
+            >
+              <p
+                class="s2"
+                style="
+                  padding-left: 22pt;
+                  text-indent: 0pt;
+                  line-height: 15pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                ภาษีมูลค่าเพิ่ม
+              </p>
+            </td>
+            <td
+              style="
+                width: 60pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input class="pic" id="pic2c" type="text" onkeyup="copyText()" />
+
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+          </tr>
+          <tr style="height: 18pt">
+            <td
+              style="
+                width: 92pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+              colspan="2"
+            >
+              <p
+                class="s2"
+                style="
+                  padding-left: 22pt;
+                  text-indent: 0pt;
+                  line-height: 15pt;
+                  text-align: left;
+                  background-color: #ffffff;
+                "
+              >
+                รวมเงินทั้งสิ้น
+              </p>
+            </td>
+            <td
+              style="
+                width: 60pt;
+                border-top-style: solid;
+                border-top-width: 1pt;
+                border-left-style: solid;
+                border-left-width: 1pt;
+                border-bottom-style: solid;
+                border-bottom-width: 1pt;
+                border-right-style: solid;
+                border-right-width: 1pt;
+                background-color: #ffffff;
+              "
+            >
+              <input class="pic" id="pic3c" type="text" onkeyup="copyText()" />
+              <p style="text-indent: 0pt; text-align: left"></p>
+            </td>
+          </tr>
+        </table>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+        <p style="text-indent: 0pt; text-align: left"><br /></p>
+
+        <p>
+          <button
+            id="printButton"
+            class="printbt"
+            type="printButton"
+            onclick="window.print()"
+          >
+            Print
+          </button>
+          <button
+            id="printButton"
+            class="Button0"
+            type="printButton"
+            onclick="location.href='reset.html';"
+          >
+            ล้างข้อมูล
+          </button>
+          <button id="printButton" class="Button" onclick="window.close()">
+            ออก
+          </button>
+        </p>
+
+        <br />
+        <br />
+        <br />
+      </body>
+    </html>
+  </body>
+</html>
